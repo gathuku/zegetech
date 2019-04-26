@@ -11,6 +11,14 @@ use Auth;
 
 class AuthController extends Controller
 {
+
+     public $apiToken;
+
+  public function __construct()
+   {
+     $this->apiToken=str_random(60);
+   }
+
     public function login(Request $request){
        //validate Request
        $rules=[
@@ -26,6 +34,8 @@ class AuthController extends Controller
         // Attempt Auth
             $auth= Auth::attempt(['email'=>$request['email'],'password'=>$request['password']]);
             if ($auth) {
+              //Update Token
+              User::where('email',$request['email'])->update(['api_token'=>$this->apiToken]);
               return 'Authenticated';
             }else{
               return ['error'=>'Credentials Dont match', 'code'=>'401'];
@@ -54,10 +64,29 @@ class AuthController extends Controller
           'email' =>$request->email,
           'phone'=>$request->phone,
           'password'=>bcrypt($request->password),
-          'api_token' =>str_random(60),
+          'api_token' =>$this->apiToken,
         ]);
 
         return 'User Created';
       }
     }
+
+   public function logout(Request $request)
+   {
+     $token = $request->header('Authorization');
+     $tokenExplode=explode(" ",$token);
+     $theToken=$tokenExplode[1];
+
+     $user = User::where('api_token',$theToken)->first();
+
+     if($user) {
+
+       $logout = User::where('id',$user->id)->update(['api_token'=>null]);
+       if($logout) {
+         return ['message' => 'User Logged Out'];
+       }
+     } else {
+       return ['message' => 'User not found'];
+     }
+   }
 }

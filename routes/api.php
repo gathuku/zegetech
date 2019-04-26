@@ -22,4 +22,10 @@ Route::prefix('v1')->namespace('API')->group(function(){
 
       Route::post('/login','AuthController@login');
       Route::post('/register','AuthController@register');
+
+      //Auth protected
+      Route::middleware('APIToken')->group(function(){
+             Route::post('/logout','AuthController@logout');
+      });
+
 });

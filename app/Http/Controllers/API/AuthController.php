@@ -54,7 +54,7 @@ class AuthController extends Controller
           'email' =>$request->email,
           'phone'=>$request->phone,
           'password'=>bcrypt($request->password),
-          'api_token' =>Str::random(60),
+          'api_token' =>str_random(60),
         ]);
 
         return 'User Created';

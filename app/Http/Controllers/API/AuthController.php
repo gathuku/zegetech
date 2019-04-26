@@ -4,6 +4,8 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
+use App\User;
 use Validator;
 use Auth;
 
@@ -31,5 +33,31 @@ class AuthController extends Controller
 
        }
     //  return $request;
+    }
+
+    public function register(Request $request)
+    {
+      //validate
+      $validator=Validator::make($request->all(),[
+        'name'=>'required|max:255',
+        'email' =>'required|unique:users|string',
+        'phone' => 'required',
+        'password'=>'required|string|confirmed'
+      ]);
+
+      if ($validator->fails()) {
+        return $validator->messages();
+      }else {
+        //Create user
+        User::create([
+          'name'=>$request->name,
+          'email' =>$request->email,
+          'phone'=>$request->phone,
+          'password'=>bcrypt($request->password),
+          'api_token' =>Str::random(60),
+        ]);
+
+        return 'User Created';
+      }
     }
 }

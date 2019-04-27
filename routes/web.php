@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::namespace('WEB')->group(function(){
+  Route::get('login','LoginController@index')->name('login');
+  Route::post('login/submit','LoginController@submitLogin')->name('login-submit');
+  Route::get('register','LoginController@register')->name('register');
+
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

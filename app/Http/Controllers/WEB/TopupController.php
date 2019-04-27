@@ -24,6 +24,15 @@ class TopupController extends Controller
       $request->headers->set('Authorization','Bearer '.auth()->user()->api_token);
 
       $response=app()->handle($request);
-      dd($response->getOriginalContent());
+      $data=(object)$response->getOriginalContent();
+    
+      $status=$data->status;
+      if ($status == 'success') {
+        flash($data->message)->success();
+        return back();
+      }else{
+        flash($data->message)->error();
+        return back();
+      }
     }
 }

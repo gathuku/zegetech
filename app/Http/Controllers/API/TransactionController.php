@@ -39,13 +39,22 @@ class TransactionController extends Controller
           ]);
         if ($topUp && $saveTransaction) {
 
-          return ['message'=> 'Success Amount deposited'];
+          return [
+            'status'=>'success',
+            'message'=> 'Success Amount deposited',
+          ];
 
         }else {
-          return ['message'=>'Amount could not be deposited'];
+          return [
+            'status'=>'error',
+            'message'=>'Amount could not be deposited',
+          ];
         }
       }else {
-        return ['message'=>'User not found'];
+        return [
+          'status'=>'error',
+          'message'=>'User not found',
+        ];
       }
 
     }
@@ -104,7 +113,7 @@ class TransactionController extends Controller
         }else {
           return [
             'status'=>'error',
-            'message'=>'User not found'
+            'message'=>'User not found',
           ];
         }
 

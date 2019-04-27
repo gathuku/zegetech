@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Transaction;
+use App\Notify;
 
 class TransactionController extends Controller
 {
@@ -59,6 +60,7 @@ class TransactionController extends Controller
 
         //return ['amount'=>$amount,'token'=>$theToken];
         $userID=User::where('api_token',$theToken)->value('id');
+        $userName=User::where('api_token',$theToken)->value('name');
 
         if($userID){
           //Get the current amount
@@ -74,8 +76,15 @@ class TransactionController extends Controller
               'type' =>'debit',
               'amount'=>$amount,
             ]);
-          if ($topUp && $saveTransaction) {
 
+            //save notification
+            Notify::create([
+              'user_id'=>$madeTo,
+              'message'=>$userName.' Has transferred '.$amount.' to your account, Your balance now is'.$newAmount,
+            ]);
+          if ($topUp && $saveTransaction) {
+             //Notify through email
+             
             return ['message'=> 'Success Amount Sent'];
 
           }else {

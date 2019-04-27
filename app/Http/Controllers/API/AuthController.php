@@ -36,9 +36,16 @@ class AuthController extends Controller
             if ($auth) {
               //Update Token
               User::where('email',$request['email'])->update(['api_token'=>$this->apiToken]);
-              return 'Authenticated';
+              return [
+                'status'=>'success',
+                'email' => $request['email'],
+                'api_token'=>$this->apiToken,
+              ];
             }else{
-              return ['error'=>'Credentials Dont match', 'code'=>'401'];
+              return [
+                'status' =>'error',
+                'error'=>'Credentials Dont match',
+                'code'=>'401'];
             }
 
        }

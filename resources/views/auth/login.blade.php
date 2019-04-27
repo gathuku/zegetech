@@ -33,17 +33,17 @@
     <!-- login page  -->
     <!-- ============================================================== -->
     <div class="splash-container">
-
+         @include('flash::message')
         <div class="card ">
             <div class="card-header text-center"><a href="/"><img class="logo-img" src="{{asset('/assets/images/user.svg')}}" style="height:10em" alt="logo"></a><span class="splash-description">Please enter your user information.</span></div>
             <div class="card-body">
                 <form method="post" action="{{route('login-submit')}}">
                   @csrf
                     <div class="form-group">
-                        <input name="email" class="form-control form-control-lg" id="username" type="text" placeholder="Username" autocomplete="off">
+                        <input name="email" class="form-control form-control-lg" id="username" type="text" placeholder="Username" autocomplete="on" required>
                     </div>
                     <div class="form-group">
-                        <input name="password" class="form-control form-control-lg" id="password" type="password" placeholder="Password">
+                        <input name="password" class="form-control form-control-lg" id="password" type="password" placeholder="Password" required>
                     </div>
                     <div class="form-group">
                         <label class="custom-control custom-checkbox">

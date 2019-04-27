@@ -17,10 +17,28 @@ class LoginController extends Controller
   }
   public function submitLogin(Request $request)
   {
-    $request = Request::create('/api/v1/login', 'POST',['name'=>Input::get('email'),'password'=>Input::get('password')]);
+    $request = Request::create('/api/v1/login', 'POST',[
+      'name'=>Input::get('email'),
+      'password'=>Input::get('password')
+      ]);
 
     $response = Route::dispatch($request);
-      dd($response->getOriginalContent());
+    $data=(object)$response->getOriginalContent();
+    $status=$data->status;
+    if ($status == 'error') {
+      flash($data->error)->error();
+      return back();
+    }else{
+      $email=$data->email;
+      flash('welcome '.$data->email);
+      return view('home',compact('email'));
+    }
+
+  }
+
+  public function register()
+  {
+    
   }
 
 }

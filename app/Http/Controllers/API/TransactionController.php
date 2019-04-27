@@ -15,12 +15,12 @@ class TransactionController extends Controller
     public function topUp(Request $request)
     {
       $token = $request->header('Authorization');
-    //  dd($token);
+
       $tokenExplode=explode(" ",$token);
       $theToken=$tokenExplode[1];
 
       $amount=$request->amount;
-      dd($request->all());
+
       $userID=User::where('api_token',$theToken)->value('id');
 
       if($userID){
@@ -90,13 +90,22 @@ class TransactionController extends Controller
              //Notify through email
              Notification::route('mail', $madeToEmail)
             ->notify(new AmountTransfered($message));
-            return ['message'=> 'Success Amount Sent'];
+            return [
+              'status'=>'success',
+              'message'=> 'Success Amount Sent',
+            ];
 
           }else {
-            return ['message'=>'Amount could not be Sent'];
+            return [
+              'status'=>'error',
+              'message'=>'Amount could not be Sent',
+            ];
           }
         }else {
-          return ['message'=>'User not found'];
+          return [
+            'status'=>'error',
+            'message'=>'User not found'
+          ];
         }
 
     }

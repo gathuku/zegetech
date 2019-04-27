@@ -15,8 +15,7 @@ class AddWalletAmountUsers extends Migration
     {
         Schema::table('users',function($table){
           $table->double('wallet_amount')->after('api_token')
-                                          ->nullable()
-                                          ->default(null);
+                                          ->default(0);
         });
     }
 

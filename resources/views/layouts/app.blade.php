@@ -40,7 +40,7 @@
                     </ul>
                     <ul class="navbar-nav mr-auto">
                       <li class="nav-item">
-                          <a class="nav-link" href="{{ route('login') }}">{{ __('Top Up') }}</a>
+                          <a class="nav-link" href="{{ route('topup') }}">{{ __('Top Up') }}</a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link" href="{{ route('login') }}">{{ __('Transfer') }}</a>

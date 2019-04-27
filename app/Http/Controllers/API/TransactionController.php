@@ -15,12 +15,12 @@ class TransactionController extends Controller
     public function topUp(Request $request)
     {
       $token = $request->header('Authorization');
+    //  dd($token);
       $tokenExplode=explode(" ",$token);
       $theToken=$tokenExplode[1];
 
       $amount=$request->amount;
-
-      //return ['amount'=>$amount,'token'=>$theToken];
+      dd($request->all());
       $userID=User::where('api_token',$theToken)->value('id');
 
       if($userID){

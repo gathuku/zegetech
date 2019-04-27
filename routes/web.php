@@ -19,6 +19,8 @@ Route::namespace('WEB')->group(function(){
   Route::get('login','LoginController@index')->name('login');
   Route::post('login/submit','LoginController@submitLogin')->name('login-submit');
   Route::get('register','LoginController@register')->name('register');
+  Route::get('/topup','TopupController@index')->name('topup');
+  Route::post('/topup/submit','TopupController@topUp')->name('topup-submit');
 
 });
 

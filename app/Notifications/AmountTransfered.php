@@ -40,9 +40,10 @@ class AmountTransfered extends Notification
      */
     public function toMail($notifiable)
     {
+        //$message=$this->message;
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+                    ->line('Hello')
+                    ->line('Amount transferred')
                     ->line('Thank you for using our application!');
     }
 

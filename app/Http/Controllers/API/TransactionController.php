@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\AmountTransfered;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Transaction;
@@ -57,6 +59,7 @@ class TransactionController extends Controller
 
         $amount=$request->amount;
         $madeTo=$request->madeTo;
+        $madeToEmail=User::where('id',$madeTo)->value('email');
 
         //return ['amount'=>$amount,'token'=>$theToken];
         $userID=User::where('api_token',$theToken)->value('id');
@@ -77,14 +80,16 @@ class TransactionController extends Controller
               'amount'=>$amount,
             ]);
 
+          $message=$userName.' Has transferred '.$amount.' to your account, Your balance now is '.$newAmount;
             //save notification
             Notify::create([
               'user_id'=>$madeTo,
-              'message'=>$userName.' Has transferred '.$amount.' to your account, Your balance now is'.$newAmount,
+              'message'=>$message,
             ]);
           if ($topUp && $saveTransaction) {
              //Notify through email
-             
+             Notification::route('mail', $madeToEmail)
+            ->notify(new AmountTransfered($message));
             return ['message'=> 'Success Amount Sent'];
 
           }else {

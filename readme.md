@@ -20,7 +20,7 @@ To access web application. Check the below link
 
 [Application](#)
 
-## Entity Relationship Model
+## database Structure
 The figure below show tables Relationship
 ![](/public/assets/images/zege/z_db.png)
 

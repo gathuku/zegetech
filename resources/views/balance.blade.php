@@ -10,10 +10,7 @@
                 <div class="card-body text-center">
                 @include('flash::message')
 
-
-
                         <h1 class="text-info"> Your balance is {{$data}}</h1>
-
 
                 </div>
             </div>

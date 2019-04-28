@@ -24,7 +24,7 @@ class TransactionController extends Controller
 
       $userID=User::where('api_token',$theToken)->value('id');
 
-      if($userID){
+      if($userID !=null){
         //Get the current amount
         $currentAmount=User::where('id',$userID)->value('wallet_amount');
 
@@ -54,7 +54,7 @@ class TransactionController extends Controller
       }else {
         return [
           'status'=>'error',
-          'message'=>'User not found',
+          'message'=>'Token not authenticated| wrong Token',
         ];
       }
 
@@ -81,18 +81,17 @@ class TransactionController extends Controller
         $madeTo=$request->madeTo;
         $madeToID=User::where('email',$madeTo)->value('id');
 
-        if (!$madeToID) {
+        if ($madeToID == null) {
           return [
             'status'=>'error',
             'message'=>'User not found',
           ];
         }
 
-        //return ['amount'=>$amount,'token'=>$theToken];
         $userID=User::where('api_token',$theToken)->value('id');
         $userName=User::where('api_token',$theToken)->value('name');
 
-        if($userID){
+        if($userID !=null){
           //Get the current amount
           $currentAmount=User::where('id',$userID)->value('wallet_amount');
 
@@ -131,7 +130,7 @@ class TransactionController extends Controller
         }else {
           return [
             'status'=>'error',
-            'message'=>'User not found',
+            'message'=>'Not authenticated to do the request',
           ];
         }
 

@@ -66,7 +66,7 @@ class AuthController extends Controller
         return $validator->messages();
       }else {
         //Create user
-        User::create([
+      $user=User::create([
           'name'=>$request->name,
           'email' =>$request->email,
           'phone'=>$request->phone,
@@ -74,7 +74,14 @@ class AuthController extends Controller
           'api_token' =>$this->apiToken,
         ]);
 
-        return 'User Created';
+        return [
+          'status'=>'success',
+          'message'=>'User Created',
+          'name'=>$user->name,
+          'email'=>$user->email,
+          'phone'=>$user->phone,
+          'api_token'=>$user->api_token,
+        ];
       }
     }
 

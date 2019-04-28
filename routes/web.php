@@ -21,6 +21,8 @@ Route::namespace('WEB')->group(function(){
   Route::get('register','LoginController@register')->name('register');
   Route::get('/topup','TopupController@index')->name('topup');
   Route::post('/topup/submit','TopupController@topUp')->name('topup-submit');
+  Route::get('/transfer','TransferController@index')->name('transfer');
+  Route::post('/transfer/submit','TransferController@transfer')->name('transfer-submit');
 
 });
 

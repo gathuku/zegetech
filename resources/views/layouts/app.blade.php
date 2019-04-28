@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel bg-primary">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -39,15 +39,20 @@
 
                     </ul>
                     <ul class="navbar-nav mr-auto">
+                      
                       <li class="nav-item">
                           <a class="nav-link" href="{{ route('topup') }}">{{ __('Top Up') }}</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="{{ route('login') }}">{{ __('Transfer') }}</a>
+                          <a class="nav-link" href="{{ route('transfer') }}">{{ __('Transfer') }}</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="{{ route('login') }}">{{ __('Notification') }}</a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link" href="{{ route('login') }}">{{ __('History') }}</a>
                       </li>
+
                     </ul>
 
 

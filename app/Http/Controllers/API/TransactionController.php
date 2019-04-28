@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Transaction;
 use App\Notify;
+use Validator;
 
 class TransactionController extends Controller
 {
@@ -62,13 +63,30 @@ class TransactionController extends Controller
     public function transfer(Request $request)
     {
 
+        //Validate
+        $validator=Validator::make($request->all(),[
+          'amount'=>'required|integer',
+          'madeTo' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+          return $validator->messages();
+        }
+
         $token = $request->header('Authorization');
         $tokenExplode=explode(" ",$token);
         $theToken=$tokenExplode[1];
 
         $amount=$request->amount;
         $madeTo=$request->madeTo;
-        $madeToEmail=User::where('id',$madeTo)->value('email');
+        $madeToID=User::where('email',$madeTo)->value('id');
+
+        if (!$madeToID) {
+          return [
+            'status'=>'error',
+            'message'=>'User not found',
+          ];
+        }
 
         //return ['amount'=>$amount,'token'=>$theToken];
         $userID=User::where('api_token',$theToken)->value('id');
@@ -84,7 +102,7 @@ class TransactionController extends Controller
             //Update Notification
             $saveTransaction=Transaction::create([
               'made_by'=>$userID,
-              'made_to'=>$madeTo,
+              'made_to'=>$madeToID,
               'type' =>'debit',
               'amount'=>$amount,
             ]);
@@ -92,12 +110,12 @@ class TransactionController extends Controller
           $message=$userName.' Has transferred '.$amount.' to your account, Your balance now is '.$newAmount;
             //save notification
             Notify::create([
-              'user_id'=>$madeTo,
+              'user_id'=>$madeToID,
               'message'=>$message,
             ]);
           if ($topUp && $saveTransaction) {
              //Notify through email
-             Notification::route('mail', $madeToEmail)
+             Notification::route('mail', $madeTo)
             ->notify(new AmountTransfered($message));
             return [
               'status'=>'success',

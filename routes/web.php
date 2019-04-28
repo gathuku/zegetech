@@ -20,6 +20,8 @@ Route::namespace('WEB')->group(function(){
   Route::post('login/submit','LoginController@submitLogin')->name('login-submit');
   Route::get('register','LoginController@register')->name('register');
   Route::post('register/submit','LoginController@registerSubmit')->name('register-submit');
+
+Route::middleware('auth')->group(function(){
   Route::get('/topup','TopupController@index')->name('topup');
   Route::post('/topup/submit','TopupController@topUp')->name('topup-submit');
   Route::get('/transfer','TransferController@index')->name('transfer');
@@ -30,6 +32,9 @@ Route::namespace('WEB')->group(function(){
 
 });
 
+
+});
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');

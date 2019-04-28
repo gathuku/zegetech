@@ -25,7 +25,8 @@ Route::namespace('WEB')->group(function(){
   Route::get('/transfer','TransferController@index')->name('transfer');
   Route::post('/transfer/submit','TransferController@transfer')->name('transfer-submit');
 
-  Route::get('notifications','NotificationController@index')->name('notifications');
+  Route::get('/notifications','NotificationController@index')->name('notifications');
+  Route::get('/history','HistoryController@index')->name('history');
 
 });
 

@@ -10,4 +10,9 @@ class Notify extends Model
       'user_id',
       'message',
     ];
+
+    public function user()
+    {
+    return  $this->belongsTo('App\User');
+    }
 }

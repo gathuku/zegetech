@@ -39,7 +39,7 @@
 
                     </ul>
                     <ul class="navbar-nav mr-auto">
-                      
+
                       <li class="nav-item">
                           <a class="nav-link" href="{{ route('topup') }}">{{ __('Top Up') }}</a>
                       </li>
@@ -47,10 +47,10 @@
                           <a class="nav-link" href="{{ route('transfer') }}">{{ __('Transfer') }}</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="{{ route('login') }}">{{ __('Notification') }}</a>
+                          <a class="nav-link" href="{{ route('notifications') }}">{{ __('Notification') }}</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="{{ route('login') }}">{{ __('History') }}</a>
+                          <a class="nav-link" href="#">{{ __('History') }}</a>
                       </li>
 
                     </ul>

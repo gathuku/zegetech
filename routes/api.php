@@ -28,6 +28,7 @@ Route::prefix('v1')->namespace('API')->group(function(){
              Route::post('/logout','AuthController@logout');
              Route::post('/transactions/topup','TransactionController@topUp');
              Route::post('/transactions/transfer','TransactionController@transfer');
+             Route::get('/notifications','NotificationController@index');
 
       });
 

@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+        
             <div class="card">
                 <div class="card-header bg-primary"> Transfer Cash <span class="text-danger">(You can only Transfer
                   to users registered to this system)</span> </div>
@@ -12,7 +13,7 @@
                 @include('flash::message')
 
                 <form class="" action="{{route('transfer-submit')}}" method="post">
-                  @csrf 
+                  @csrf
                   <div class="form-group col-md-5">
                     <label for="">Enter user Email or Phone</label>
                   <input class="form-control" type="text" name="madeTo" value="" required>

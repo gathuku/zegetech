@@ -19,10 +19,13 @@ Route::namespace('WEB')->group(function(){
   Route::get('login','LoginController@index')->name('login');
   Route::post('login/submit','LoginController@submitLogin')->name('login-submit');
   Route::get('register','LoginController@register')->name('register');
+  Route::post('register/submit','LoginController@registerSubmit')->name('register-submit');
   Route::get('/topup','TopupController@index')->name('topup');
   Route::post('/topup/submit','TopupController@topUp')->name('topup-submit');
   Route::get('/transfer','TransferController@index')->name('transfer');
   Route::post('/transfer/submit','TransferController@transfer')->name('transfer-submit');
+
+  Route::get('notifications','NotificationController@index')->name('notifications');
 
 });
 

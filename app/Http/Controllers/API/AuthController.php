@@ -63,16 +63,21 @@ class AuthController extends Controller
       ]);
 
       if ($validator->fails()) {
-        return $validator->messages();
+        return [
+          'status'=>'error',
+          'message'=> 'Rules dont match'
+        ];
       }else {
         //Create user
-      $user=User::create([
-          'name'=>$request->name,
-          'email' =>$request->email,
-          'phone'=>$request->phone,
-          'password'=>bcrypt($request->password),
-          'api_token' =>$this->apiToken,
-        ]);
+
+        $user=User::create([
+            'name'=>$request->name,
+            'email' =>$request->email,
+            'phone'=>$request->phone,
+            'password'=>bcrypt($request->password),
+            'api_token' =>$this->apiToken,
+          ]);
+
 
         return [
           'status'=>'success',

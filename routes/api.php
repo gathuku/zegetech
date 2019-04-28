@@ -30,6 +30,7 @@ Route::prefix('v1')->namespace('API')->group(function(){
              Route::post('/transactions/transfer','TransactionController@transfer');
              Route::get('/notifications','NotificationController@index');
              Route::get('/history','HistoryController@index');
+             Route::get('/balance','BalanceController@index');
 
       });
 

@@ -29,6 +29,7 @@ Route::middleware('auth')->group(function(){
 
   Route::get('/notifications','NotificationController@index')->name('notifications');
   Route::get('/history','HistoryController@index')->name('history');
+  Route::get('/balance','BalanceController@index')->name('balance');
 
 });
 

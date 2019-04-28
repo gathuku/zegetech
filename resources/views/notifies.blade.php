@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header bg-primary">Dashboard</div>
+                <div class="card-header bg-primary"> <h3>Transaction Notifications</h3> </div>
 
                 <div class="card-body">
                 @include('flash::message')

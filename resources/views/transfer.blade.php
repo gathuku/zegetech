@@ -4,9 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-        
+
             <div class="card">
-                <div class="card-header bg-primary"> Transfer Cash <span class="text-danger">(You can only Transfer
+                <div class="card-header bg-primary"> <h3>Transfer Cash</h3> <span class="text-danger">(You can only Transfer
                   to users registered to this system)</span> </div>
 
                 <div class="card-body">

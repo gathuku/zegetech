@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header bg-primary"> Top Up your Account </div>
+                <div class="card-header bg-primary"> <h3> Top Up your Account</h3> </div>
 
                 <div class="card-body">
                 @include('flash::message')

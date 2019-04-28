@@ -41,16 +41,16 @@
                     <ul class="navbar-nav mr-auto">
 
                       <li class="nav-item">
-                          <a class="nav-link" href="{{ route('topup') }}">{{ __('Top Up') }}</a>
+                          <a class="nav-link" href="{{ route('topup') }}"> <strong>{{ __('Top Up') }}</strong></a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="{{ route('transfer') }}">{{ __('Transfer') }}</a>
+                          <a class="nav-link" href="{{ route('transfer') }}"> <strong>{{ __('Transfer') }}</strong> </a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="{{ route('notifications') }}">{{ __('Notification') }}</a>
+                          <a class="nav-link" href="{{ route('notifications') }}"> <strong>{{ __('Notification') }}</strong> </a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="#">{{ __('History') }}</a>
+                          <a class="nav-link" href="{{ route('history')}}"> <strong>{{ __('History') }}</strong> </a>
                       </li>
 
                     </ul>

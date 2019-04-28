@@ -20,7 +20,7 @@
                        <tr>
                          <td>{{$data->type}}</td>
                          <td>{{$data->amount}}</td>
-                         <td>{{$data->date}}</td>
+                         <td>{{$data->created_at}}</td>
                        </tr>
                        @endforeach
                      </tbody>

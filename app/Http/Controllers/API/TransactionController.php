@@ -95,6 +95,13 @@ class TransactionController extends Controller
           //Get the current amount
           $currentAmount=User::where('id',$userID)->value('wallet_amount');
 
+          //Verify amount Exists 
+          if ($currentAmount < $amount) {
+            return [
+              'status'=>'error',
+              'message'=>'Insufficient funds',
+            ];
+          }
           $newAmount=$currentAmount - $amount;
           //Update amount
             $topUp= User::where('id',$userID)->update(['wallet_amount'=>$newAmount]);

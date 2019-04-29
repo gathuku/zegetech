@@ -64,7 +64,7 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref full-height ">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -83,13 +83,17 @@
                 <div class="title m-b-md">
                     Zegetech <br>
                     Web Application
+
                 </div>
 
-                <div class="">
+                <div class="col-md-6">
+                  <p class="col-md-6">
                     This web application allows members to create a free account <br>
-                    when logged in you can toup up your account using Mpesa
+                    when logged in you can toup up your account using Mpesa <br>
                     (For demo purpose input manually provided).
-                    You can also transfer funds to other registered members with the system.
+                    You can also transfer funds to other registered <br> members with the system.
+                  </p>
+
 
                 </div>
             </div>

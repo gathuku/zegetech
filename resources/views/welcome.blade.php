@@ -81,12 +81,15 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Zegetech
+                    Zegetech <br>
+                    Web Application
                 </div>
 
-                <div class="links">
-                    <a href="{{route('login')}}">Login</a>
-                    <a href="{{route('register')}}">Register</a>
+                <div class="">
+                    This web application allows members to create a free account <br>
+                    when logged in you can toup up your account using Mpesa
+                    (For demo purpose input manually provided).
+                    You can also transfer funds to other registered members with the system.
 
                 </div>
             </div>

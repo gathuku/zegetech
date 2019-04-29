@@ -8,6 +8,7 @@ This project provide a simple API. All the API functionalities are described in 
 - PHP
 - Laravel - MVC framework based on PHP
 - MySQL database
+- Sendgrid mail provider
 
 
 ## API

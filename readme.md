@@ -1,5 +1,6 @@
 # ZegeTech Application.
-This web application is served by an API. The API and the application are in the same application.
+This project provide a simple API. All the API functionalities are described in the [documentation](https://documenter.getpostman.com/view/5018102/S1LpbC5e). The project has also `internaly` consumed the API to make a beautiful we [application](https://zegetech.herokuapp.com).
+
 ## Technologies used
 ### Frontend
 - Boostrap css framework
